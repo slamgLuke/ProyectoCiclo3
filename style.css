@@ -9,8 +9,9 @@ h1{
 }
 
 body {
-  /* background-image: url("https://i.gifer.com/342z.gif"); */
-  background-repeat: repeat;  
+  background-image: url("https://i.gifer.com/2A5.gif");
+  background-size: cover;
+  /* background-repeat: repeat;   */
 }
 
 .formulario{
@@ -51,4 +52,16 @@ body {
 
 .ingresar:haver {
   color: white;
+}
+
+.olvide{
+  color: white;
+  text-decoration-style: none;
+  text-decoration-line: none;
+}
+
+.olvide:hover{
+  color: white;
+  text-decoration-style: none;
+  text-decoration-line: none;
 }
