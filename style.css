@@ -1,0 +1,52 @@
+h1{
+  font-family: 'Streamster';
+  font-size: 50px;
+  color: white;
+  text-shadow: -2.5px -2.5px 0 black,
+          2.5px -2.5px 0 black,
+          -2.5px 2.5px 0 black,
+          2.5px 2.5px 0 black;
+}
+
+body {
+  /* background-image: url("https://i.gifer.com/342z.gif"); */
+  background-repeat: repeat;  
+}
+
+.formulario{
+  background: rgba(0,0,0,.5);
+  padding: 20px;
+}
+
+.form-group label {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Streamster', cursive;
+  text-shadow: -2.5px -2.5px 0 black,
+        2.5px -2.5px 0 black,
+        -2.5px 2.5px 0 black,
+        2.5px 2.5px 0 black;
+  color: white;
+  text-transform: uppercase;
+}
+
+.form-group input {
+  font-size: 20px;
+  font-family:Arial, Helvetica, sans-serif;
+  text-shadow:  
+        0.5px 0.5px 0 black;
+}
+
+.btn-primary {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Streamster', cursive;
+  background-color: #ff7f50;
+  border-color: #ff7f50;
+}
+
+.btn-primary:hover {
+  background-color: #ffa07a;
+  border-color: #ffa07a;
+}
+
