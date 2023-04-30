@@ -9,7 +9,7 @@ h1{
 }
 
 body {
-  background-image: url("https://i.gifer.com/2A5.gif");
+  /* background-image: url("https://i.gifer.com/2A5.gif"); */
   background-size: cover;
   /* background-repeat: repeat;   */
 }
@@ -64,4 +64,22 @@ body {
   color: white;
   text-decoration-style: none;
   text-decoration-line: none;
+}
+
+.olvide1 {
+  color: white;
+  text-decoration-style: none;
+  text-decoration-line: none;
+  font-size: 20px;
+  font-weight: 700!important;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(0,0,0,.5);
+}
+
+.olvide1:hover{
+  color: white;
+  text-decoration-style: none;
+  text-decoration-line: none;
+  cursor: pointer;
 }
