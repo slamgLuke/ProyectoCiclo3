@@ -4,5 +4,5 @@ CREATE TABLE Usuario(Username varchar(255), Email varchar(255), Password varchar
 CREATE TABLE Cliente(Username varchar(255), DNI int, Nombre varchar(255), Apellido Varchar(255));
 CREATE TABLE Proveedor(Username varchar(255), Empresa varchar(255), RUC Int);
 CREATE TABLE Compra(Codigo int, ClienteUsername varchar(255), VehiculoVIN int, Fecha DATE, Monto float);
-CREATE TABLE Vehiculo(VIN int, Marca varchar(255), Nombre varchar(255), Año int, Tipo varchar(255), MotorMarca varchar(255), MotorModelo varchar(255), Transmision varchar(255), Kilometraje int, Color varchar(255), Precio float, ProveedorUsername varchar(255));
+CREATE TABLE Vehiculo(VIN int, Modelo varchar(255), Nombre varchar(255), Año int, Tipo varchar(255), MotorMarca varchar(255), MotorModelo varchar(255), Transmision varchar(255), Kilometraje int, Color varchar(255), Precio float, ProveedorUsername varchar(255));
 CREATE TABLE Motor(Marca varchar(255), Modelo varchar(255), Combustible varchar(255), Cilindros int, Cilindrada int, Potencia int);
