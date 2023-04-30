@@ -1,12 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy Cars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.cdnfonts.com/css/streamster" rel="stylesheet">
 
-<html>
-    <head>
-        <title>Tienda Autos</title>
-    </head>
-  
-  
-    <body>
-        <H1>Tienda Autos</H1>
-    </body>
+    <style>
+      h1{
+        text-decoration:overline;
+        font-family: 'Streamster', cursive;
+        font-size: 100px;
+        margin-top: 60px;
+        color: white;
+        text-shadow: -2.5px -2.5px 0 black,
+               2.5px -2.5px 0 black,
+               -2.5px 2.5px 0 black,
+               2.5px 2.5px 0 black;
+      }
+      .box{
+        background-color: yellow;
+      }
+      body {
+        background-image: url("https://i.gifer.com/342z.gif");
+        background-repeat: no-repeat;
+        background-repeat: repeat;
+      }
+      .form-group label {
+        font-size: 30px;
+        font-weight: bold;
+        font-family: 'Streamster', cursive;
+        text-shadow: -2.5px -2.5px 0 black,
+              2.5px -2.5px 0 black,
+              -2.5px 2.5px 0 black,
+              2.5px 2.5px 0 black;
+        color: white;
+        text-transform: uppercase;
+      }
+
+      .form-group input {
+        font-size: 20px;
+        font-family:Arial, Helvetica, sans-serif;
+        text-shadow:  
+              0.5px 0.5px 0 black;
+      }
+
+      .btn-primary {
+        font-size: 25px;
+        font-weight: bold;
+        font-family: 'Streamster', cursive;
+        background-color: #ff7f50;
+        border-color: #ff7f50;
+      }
+
+      .btn-primary:hover {
+        background-color: #ffa07a;
+        border-color: #ffa07a;
+      }
+
+    </style>
+
+    
+  </head>
+
+
+  <body>
+    <h1 class="text-center">Welcome!</h1>
+    
+    <form class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+
+    <script>
+      // Solicita permisos de sonido al cargar la página
+      window.addEventListener('DOMContentLoaded', function() {
+        navigator.permissions.query({ name: 'sound' })
+          .then(function(result) {
+            if (result.state === 'granted') {
+              console.log('Permiso de sonido concedido.');
+              // Aquí puedes agregar el código para habilitar el sonido en tu página
+            } else {
+              console.log('Permiso de sonido no concedido.');
+              // Aquí puedes agregar el código para mostrar un mensaje de advertencia en tu página
+            }
+          });
+      });
+    </script>
+
+    <script src="permiso.js"></script>
+    <!-- Link to Bootstrap JS file (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=emNgfuw8vlA" frameborder="0" allowfullscreen ></iframe>
+  </body>
 </html>
