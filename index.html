@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://fonts.cdnfonts.com/css/streamster" rel="stylesheet">
     <link href="style.css" rel="stylesheet" type="text/css">
-  </head>
+
+</head>
 
 
   <body>
@@ -29,7 +30,7 @@
                         <input type="submit" class="btn btn-block ingresar" value="INGRESAR">
                     </div>
                     <div class="form-group ms-sm-4 text-right">
-                        <span class=""> <a href="#" class="olvide">Olvide mi contraseña? &#x1F5FF</a></span>
+                        <span class=""> <a href="#" class="olvide" onmouseover="this.style.display='none'" onmouseout="this.style.display='inline'">Olvide mi contraseña? &#x1F5FF</a></span>
                     </div>
                     <div class="form-group text-center" >
                         <span><a href="" class="olvide1">REGISTRARSE</a></span>
@@ -38,28 +39,11 @@
             </div>
         </div>
     </div>
-    
-    <script>
-      // Solicita permisos de sonido al cargar la página
-      window.addEventListener('DOMContentLoaded', function() {
-        navigator.permissions.query({ name: 'sound' })
-          .then(function(result) {
-            if (result.state === 'granted') {
-              console.log('Permiso de sonido concedido.');
-              // Aquí puedes agregar el código para habilitar el sonido en tu página
-            } else {
-              console.log('Permiso de sonido no concedido.');
-              // Aquí puedes agregar el código para mostrar un mensaje de advertencia en tu página
-            }
-          });
-      });
-    </script>
-
-    <script src="permiso.js"></script>
     <!-- Link to Bootstrap JS file (optional) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <iframe width="0" height="0" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=emNgfuw8vlA" frameborder="0" allowfullscreen ></iframe>
-  </body>
+
+    </body>
 </html>

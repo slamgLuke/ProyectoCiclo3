@@ -58,6 +58,7 @@ body {
   color: white;
   text-decoration-style: none;
   text-decoration-line: none;
+  cursor: pointer;
 }
 
 .olvide:hover{
