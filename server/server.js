@@ -64,7 +64,6 @@ app.post('/register.cliente', (req, res) => {
 // PROVEEDOR:
 app.post('/register.proveedor', (req, res) => {
     console.log("\n>> Intentando registrar proveedor");
-
     const { Username, Email, Password, Empresa, RUC } = req.body;
     const usuario_insert_query = 'INSERT INTO Usuario(Username, Email, Password) VALUES (?, ?, ?)';
     const proveedor_insert_query = 'INSERT INTO Proveedor(Username, Empresa, RUC) VALUES (?, ?, ?)';
