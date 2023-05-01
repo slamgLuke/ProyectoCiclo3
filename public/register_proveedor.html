@@ -18,7 +18,7 @@
       <div class="col-md-8 formulario">
         <form id="form">
           <div class="form-group text-center">
-            <h1 class="text-light">REGISTRAR CLIENTE</h1>
+            <h1 class="text-light">REGISTRAR PROVEEDOR</h1>
           </div>
           <div class="form-group row mx-sm-4 pt-3">
             <label for="username" class="col-form-label col-md-4">Nombre de usuario:</label>
@@ -27,23 +27,17 @@
             </div>
           </div>
           <div class="form-group row mx-sm-4 pt-3">
-            <label for="dni" class="col-form-label col-md-4">DNI:</label>
+            <label for="ruc" class="col-form-label col-md-4">RUC:</label>
               <div class="col-md-8">
-                <input type="number" class="form-control text-white" id="dni" name="dni" placeholder="Ingrese su DNI" pattern="[0-9]{8}" maxlength="8" required>
-                <div class="invalid-feedback">El DNI debe contener solo números y tener 8 dígitos.</div>
+                <input type="number" class="form-control text-white" id="ruc" name="ruc" placeholder="Ingrese su RUC" pattern="[0-9]{11}" maxlength="11" required>
+                <div class="invalid-feedback">El RUC debe contener solo números y tener 11 dígitos.</div>
           </div>
           </div>
           
           <div class="form-group row mx-sm-4 pt-3">
-            <label for="nombre" class="col-form-label col-md-4">Nombre:</label>
+            <label for="empresa" class="col-form-label col-md-4">Empresa:</label>
             <div class="col-md-8">
-              <input type="text" class="form-control text-white" placeholder="Ingrese su nombre" name="nombre" id="nombre">
-            </div>
-          </div>
-          <div class="form-group row mx-sm-4 pt-3">
-            <label for="apellido" class="col-form-label col-md-4">Apellido:</label>
-            <div class="col-md-8">
-              <input type="text" class="form-control text-white" placeholder="Ingrese su apellido" name="apellido" id="apellido">
+              <input type="text" class="form-control text-white" placeholder="Ingrese el nombre de su empresa" name="empresa" id="empresa">
             </div>
           </div>
           <div class="form-group row mx-sm-4 pt-3">
@@ -106,7 +100,7 @@
       });
     </script>
 
-    <!-- Script para llamar a la API de registrar cliente -->
+    <!-- Script para llamar a la API de registrar proveedor -->
     <script>
       const form = document.getElementById('form');
       
@@ -117,11 +111,10 @@
           const email = document.getElementById('email').value;
           const password = document.getElementById('password').value;
           
-          const dni = document.getElementById('dni').value;
-          const nombre = document.getElementById('nombre').value;
-          const apellido = document.getElementById('apellido').value;
+          const ruc = document.getElementById('ruc').value;
+          const empresa = document.getElementById('empresa').value;
 
-          fetch('/register.cliente', {
+          fetch('/register.proveedor', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -130,19 +123,18 @@
               Username: username,
               Email: email,
               Password: password,
-              DNI: dni,
-              Nombre: nombre,
-              Apellido: apellido
+              Empresa: empresa,
+              RUC: ruc,
             })
           })
             .then(response => response.text())
             .then(data => {
               console.log(data);
-              if (data === 'Cliente registrado correctamente') {
+              if (data === 'Proveedor registrado correctamente') {
                 alert('Usuario registrado con éxito');
                 window.location.href = 'index.html';
               } else if (data === 'Usuario ya existe') {
-                alert('El nombre de usuario ya existe');
+                alert('El usuario ya existe');
               } else {
                 alert('Error al registrar usuario');
               }

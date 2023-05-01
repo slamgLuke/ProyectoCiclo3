@@ -16,15 +16,15 @@
     <div class="container">
         <div class="row justify-content-center pt-5 mt-5 m-1">
             <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">
-                <form action="" method="POST">
+                <form id="form">
                     <div class="form-group text-center">
                         <h1 class="text-light">Iniciar Sesión</h1>
                     </div>
                     <div class="form-group mx-sm-4 pt-3">
-                        <input type="text" class="form-control" placeholder="Ingrese su usuario">
+                        <input type="text" class="form-control" placeholder="Ingrese su usuario" id="username">
                     </div>
                     <div class="form-group mx-sm-4">
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña">
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña" id="password">
                     </div>
                     <div class="form-group mx-sm-4">
                         <input type="submit" class="btn btn-block ingresar" value="INGRESAR">
@@ -34,12 +34,51 @@
                     </div>
                     <div class="form-group text-center" >
                             <p>¿No tienes una cuenta?<br>Registrate</p>
-                            <span><a href="register_client.html" class="olvide1">CLIENTE</a><a href="" class="olvide1">PROVEEDOR</a></span>
+                            <span><a href="register_client.html" class="olvide1">CLIENTE</a><a href="register_proveedor.html" class="olvide1">PROVEEDOR</a></span>
                     </div>
                 </from>
             </div>
         </div>
     </div>
+
+    <!-- Script para llamar a la API de login -->
+    <script>
+        console.log("hola");
+        const form = document.getElementById('form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Username: username,
+                    Password: password
+                })
+            })
+                .then(res => res.text())
+                .then(data => {
+                    if (data === 'Cliente') {
+                        console.log("Cliente");
+                    } else if (data === 'Proveedor') {
+                        console.log("Proveedor");
+                    } else {
+                        alert('Usuario o contraseña incorrectos');
+                    }
+                })
+                .catch(error => {
+                  console.log(error);
+                  alert('Error: ', error);
+                });
+        });
+    </script>
+
     <!-- Link to Bootstrap JS file (optional) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
