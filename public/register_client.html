@@ -16,7 +16,7 @@
   <div class="container">
     <div class="row justify-content-center pt-5 mt-5 mr-1">
       <div class="col-md-8 formulario">
-        <form action="" method="POST">
+        <form id="form">
           <div class="form-group text-center">
             <h1 class="text-light">REGISTRAR CLIENTE</h1>
           </div>
@@ -29,7 +29,7 @@
           <div class="form-group row mx-sm-4 pt-3">
             <label for="dni" class="col-form-label col-md-4">DNI:</label>
               <div class="col-md-8">
-                <input type="number" step="1" class="form-control text-white" id="dni" name="dni" placeholder="Ingrese su DNI" pattern="[0-9]{8}" maxlength="8" required>
+                <input type="text" class="form-control text-white" id="dni" name="dni" placeholder="Ingrese su DNI" pattern="[0-9]{8}" maxlength="8" required>
                 <div class="invalid-feedback">El DNI debe contener solo números y tener 8 dígitos.</div>
           </div>
           </div>
@@ -63,16 +63,18 @@
             <input type="submit" class="btn btn-block ingresar" value="REGISTRAR">
           </div>
           <div class="form-group ms-sm-4 text-right">
-            <span class=""> <a href="#">Olvide mi contraseña &#x1F5FF</a></span>
+            <span class=""> <a href="">Olvide mi contraseña &#x1F5FF</a></span>
           </div>
           <div class="form-group">
-            <span><a href="" class="olvide">INGRESAR</a></span>
+            <span><a href="index.html" class="olvide">INICIAR SESIÓN</a></span>
+
           </div>
         </form>
       </div>
     </div>
   </div>
-    
+   
+    <!-- Script para cargar sonido>
     <script>
       // Solicita permisos de sonido al cargar la página
       window.addEventListener('DOMContentLoaded', function() {
@@ -82,15 +84,15 @@
               console.log('Permiso de sonido concedido.');
               // Aquí puedes agregar el código para habilitar el sonido en tu página
             } else {
-              console.log('Permiso de sonido no concedido.');
+              console.log('Permiso de sonido no concedido.');  
               // Aquí puedes agregar el código para mostrar un mensaje de advertencia en tu página
             }
           });
       });
     </script>
+    <!-->
 
-    <script src="permiso.js"></script>
-
+    <!-- Script para mostrar/ocultar contraseña -->
     <script>
       const showPasswordBtn = document.getElementById('show-password-btn');
       const passwordInput = document.getElementById('password');
@@ -105,6 +107,53 @@
         }
       });
     </script>
+
+    <!-- Script para llamar a la API -->
+    <script>
+      const form = document.getElementById('form');
+      
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const username = document.getElementById('username').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          
+          const dni = document.getElementById('dni').value;
+          const nombre = document.getElementById('nombre').value;
+          const apellido = document.getElementById('apellido').value;
+
+          fetch('/register.cliente', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              Username: username,
+              Email: email,
+              Password: password,
+              DNI: dni,
+              Nombre: nombre,
+              Apellido: apellido
+            })
+          })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data);
+              if (data.status === 'ok') {
+                alert('Usuario registrado con éxito');
+                window.location.href = 'index.html';
+              } else {
+                alert('Error al registrar usuario');
+              }
+            })
+            .catch(error => {
+              console.log(error);
+              alert('Error al registrar usuario');
+            });
+        });
+    </script>
+
     <!-- Link to Bootstrap JS file (optional) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
