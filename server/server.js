@@ -1,9 +1,13 @@
 const express = require('express');
 const mysql =  require('mysql');
 const app = express();
-const port = 443;
+const port = 3000;
 
-// Coneccion a automarket
+// servidor del website
+app.use(express.static('public'));
+
+
+// Conexion a base de datos 'automarket'
 const connection = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
