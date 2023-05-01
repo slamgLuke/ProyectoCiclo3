@@ -29,8 +29,8 @@
           <div class="form-group row mx-sm-4 pt-3">
             <label for="ruc" class="col-form-label col-md-4">RUC:</label>
               <div class="col-md-8">
-                <input type="text" class="form-control text-white" id="ruc" name="ruc" placeholder="Ingrese su RUC" pattern="[0-9]{11}" maxlength="11" required>
-                <div class="invalid-feedback">El DNI debe contener solo números y tener 8 dígitos.</div>
+                <input type="number" class="form-control text-white" id="ruc" name="ruc" placeholder="Ingrese su RUC" pattern="[0-9]{11}" maxlength="11" required>
+                <div class="invalid-feedback">El RUC debe contener solo números y tener 11 dígitos.</div>
           </div>
           </div>
           
@@ -100,7 +100,7 @@
       });
     </script>
 
-    <!-- Script para llamar a la API -->
+    <!-- Script para llamar a la API de registrar proveedor -->
     <script>
       const form = document.getElementById('form');
       
@@ -124,7 +124,7 @@
               Email: email,
               Password: password,
               Empresa: empresa,
-              Ruc: ruc,
+              RUC: ruc,
             })
           })
             .then(response => response.text())
@@ -133,6 +133,8 @@
               if (data === 'Proveedor registrado correctamente') {
                 alert('Usuario registrado con éxito');
                 window.location.href = 'index.html';
+              } else if (data === 'Usuario ya existe') {
+                alert('El usuario ya existe');
               } else {
                 alert('Error al registrar usuario');
               }

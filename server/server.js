@@ -50,31 +50,36 @@ app.post('/register.cliente', (req, res) => {
             console.log(">> Usuario ya existe!: '", Username, "'\n");
             res.status(200).send('Usuario ya existe');
             return;
+        } 
+        else {
+            // Camino correcto para registrar cliente
+            // query
+            const usuario_insert_query = 'INSERT INTO Usuario(Username, Email, Password) VALUES (?, ?, ?)';
+            const cliente_insert_query = 'INSERT INTO Cliente(Username, DNI, Nombre, Apellido) VALUES (?, ?, ?, ?)';
+        
+            // ejecutar query
+            connection.query(usuario_insert_query, [Username, Email, Password], (error, results) => {
+                if (error) {
+                    console.error('Error al insertar usuario: ', error);
+                    res.status(500).send('Error al obtener los datos de la base de datos');
+                    return;
+                }
+                connection.query(cliente_insert_query, [Username, DNI, Nombre, Apellido], (error, results) => {
+                    if (error) {
+                        console.error('Error al insertar cliente: ', error);
+                        res.status(500).send('Error al obtener los datos de la base de datos');
+                        return;
+                    }
+                    else {
+                        console.log(">> Cliente registrado correctamente\n");
+                        res.status(200).send('Cliente registrado correctamente');
+                        return;
+                    }
+                });
+            });
         }
     });
 
-    // query
-    const usuario_insert_query = 'INSERT INTO Usuario(Username, Email, Password) VALUES (?, ?, ?)';
-    const cliente_insert_query = 'INSERT INTO Cliente(Username, DNI, Nombre, Apellido) VALUES (?, ?, ?, ?)';
-
-    // ejecutar query
-    connection.query(usuario_insert_query, [Username, Email, Password], (error, results) => {
-        if (error) {
-            console.error('Error al insertar usuario: ', error);
-            res.status(500).send('Error al obtener los datos de la base de datos');
-            return;
-        }
-        connection.query(cliente_insert_query, [Username, DNI, Nombre, Apellido], (error, results) => {
-            if (error) {
-                console.error('Error al insertar cliente: ', error);
-                res.status(500).send('Error al obtener los datos de la base de datos');
-                return;
-            }
-            console.log(">> Cliente registrado correctamente\n");
-            res.status(200).send('Cliente registrado correctamente');
-            return;
-        });
-    });
 });
 //
 //
@@ -99,30 +104,35 @@ app.post('/register.proveedor', (req, res) => {
             res.status(200).send('Usuario ya existe');
             return;
         }
-    });
-
-    // query
-    const usuario_insert_query = 'INSERT INTO Usuario(Username, Email, Password) VALUES (?, ?, ?)';
-    const proveedor_insert_query = 'INSERT INTO Proveedor(Username, Empresa, RUC) VALUES (?, ?, ?)';
-
-    // ejecutar query
-    connection.query(usuario_insert_query, [Username, Email, Password], (error, results) => {
-        if (error) {
-            console.error('Error al insertar usuario: ', error);
-            res.status(500).send('Error al obtener los datos de la base de datos');
-            return;
+        else {
+            // Camino correcto para registrar proveedor
+             // query
+            const usuario_insert_query = 'INSERT INTO Usuario(Username, Email, Password) VALUES (?, ?, ?)';
+            const proveedor_insert_query = 'INSERT INTO Proveedor(Username, Empresa, RUC) VALUES (?, ?, ?)';
+        
+            // ejecutar query
+            connection.query(usuario_insert_query, [Username, Email, Password], (error, results) => {
+                if (error) {
+                    console.error('Error al insertar usuario: ', error);
+                    res.status(500).send('Error al obtener los datos de la base de datos');
+                    return;
+                }
+                connection.query(proveedor_insert_query, [Username, Empresa, RUC], (error, results) => {
+                    if (error) {
+                        console.error('Error al insertar proveedor: ', error);
+                        res.status(500).send('Error al obtener los datos de la base de datos');
+                        return;
+                    }
+                    else {
+                        console.log(">> Proveedor registrado correctamente\n");
+                        res.status(200).send('Proveedor registrado correctamente');
+                        return;
+                    }
+                });
+            });
         }
-        connection.query(proveedor_insert_query, [Username, Empresa, RUC], (error, results) => {
-            if (error) {
-                console.error('Error al insertar proveedor: ', error);
-                res.status(500).send('Error al obtener los datos de la base de datos');
-                return;
-            }
-            console.log(">> Proveedor registrado correctamente\n");
-            res.status(200).send('Proveedor registrado correctamente');
-            return;
-        });
     });
+
 });
 
 
@@ -151,40 +161,47 @@ app.post('/login', (req, res) => {
             res.status(200).send('Usuario no encontrado');
             return;
         }
-        console.log(">>", results.length, "coincidencia(s)");
+        else {
+            // Camino correcto para logear usuario
+            console.log(">>", results.length, "coincidencia(s)");
+    
+            // check si es cliente
+            const cliente_query = 'SELECT * FROM Cliente WHERE Username = ?';
+            connection.query(cliente_query, [Username], (error, results) => {
+                if (error) {
+                    console.error('Error al realizar la consulta: ', error);
+                    res.status(500).send('Error al obtener los datos de la base de datos');
+                    return;
+                }
+                // si es cliente
+                if (results.length > 0) {
+                    console.log(">> Usuario es cliente\n");
+                    res.status(200).send('Cliente');
+                    return;
+                }
+                // si no es cliente
+                else {
+                    // check si es proveedor
+                    const proveedor_query = 'SELECT * FROM Proveedor WHERE Username = ?';
+                    connection.query(proveedor_query, [Username], (error, results) => {
+                        if (error) {
+                            console.error('Error al realizar la consulta: ', error);
+                            res.status(500).send('Error al obtener los datos de la base de datos');
+                            return;
+                        }
+                        // si es proveedor
+                        if (results.length > 0) {
+                            console.log(">> Usuario es proveedor\n");
+                            res.status(200).send('Proveedor');
+                            return;
+                        }
+                    });
 
-        // check si es cliente o proveedor
-        const cliente_query = 'SELECT * FROM Cliente WHERE Username = ?';
-        connection.query(cliente_query, [Username], (error, results) => {
-            if (error) {
-                console.error('Error al realizar la consulta: ', error);
-                res.status(500).send('Error al obtener los datos de la base de datos');
-                return;
-            }
-            if (results.length > 0) {
-                console.log(">> Usuario es cliente\n");
-                res.status(200).send('Cliente');
-                return;
-            }
-        });
-
-        const proveedor_query = 'SELECT * FROM Proveedor WHERE Username = ?';
-        connection.query(proveedor_query, [Username], (error, results) => {
-            if (error) {
-                console.error('Error al realizar la consulta: ', error);
-                res.status(500).send('Error al obtener los datos de la base de datos');
-                return;
-            }
-            if (results.length > 0) {
-                console.log(">> Usuario es proveedor\n");
-                res.status(200).send('Proveedor');
-                return;
-            }
-        });
-        console.log(">> Usuario no es cliente ni proveedor\n");
-        res.status(200).send('Error');
-        return;
+                }
+            });        
+        }
     });
+
 });
 
 
