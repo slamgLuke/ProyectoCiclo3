@@ -10,7 +10,7 @@ Pasos:
 $ git clone github.com/slamgLuke/ProyectoCiclo3 mi_carpeta
 $ cd mi_carpeta
 ```
-3. Configura el apartado de "Conexión a la base de datos 'automarket' en server/server.js que se adapte a tu usuario y contraseña de tu base de datos mysql"
+3. Configura el apartado de "Conexión a la base de datos 'automarket'" en server/server.js, para que se adapte a tu usuario y contraseña de tu base de datos mysql
 4. Lanza el servidor:
 ```
 $ node server/server.js
