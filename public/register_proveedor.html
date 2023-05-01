@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy Cars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.cdnfonts.com/css/streamster" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+
+
+  <body>
+    
+    
+  <div class="container">
+    <div class="row justify-content-center pt-5 mt-5 mr-1">
+      <div class="col-md-8 formulario">
+        <form id="form">
+          <div class="form-group text-center">
+            <h1 class="text-light">REGISTRAR PROVEEDOR</h1>
+          </div>
+          <div class="form-group row mx-sm-4 pt-3">
+            <label for="username" class="col-form-label col-md-4">Nombre de usuario:</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control text-white" placeholder="Ingrese su nombre de usuario" name="username" id="username">
+            </div>
+          </div>
+          <div class="form-group row mx-sm-4 pt-3">
+            <label for="ruc" class="col-form-label col-md-4">RUC:</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control text-white" id="ruc" name="ruc" placeholder="Ingrese su RUC" pattern="[0-9]{11}" maxlength="11" required>
+                <div class="invalid-feedback">El DNI debe contener solo números y tener 8 dígitos.</div>
+          </div>
+          </div>
+          
+          <div class="form-group row mx-sm-4 pt-3">
+            <label for="empresa" class="col-form-label col-md-4">Empresa:</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control text-white" placeholder="Ingrese el nombre de su empresa" name="empresa" id="empresa">
+            </div>
+          </div>
+          <div class="form-group row mx-sm-4 pt-3">
+            <label for="email" class="col-form-label col-md-4">Correo electrónico:</label>
+            <div class="col-md-8">
+              <input type="email" class="form-control text-white" placeholder="Ingrese su correo electrónico" name="email" id="email">
+            </div>
+          </div>
+          <div class="form-group row mx-sm-4 pt-3">
+            <label for="password" class="col-form-label col-md-4">Contraseña:</label>
+            <div class="col-md-8">
+              <input type="password" class="form-control text-white" placeholder="Ingrese su contraseña" name="password" id="password">
+              <br>
+              <button type="button" class="btn btn-outline-secondary" id="show-password-btn">Mostrar contraseña</button>
+            </div>
+          </div>
+          <div class="form-group mx-sm-2">
+            <input type="submit" class="btn btn-block ingresar" value="REGISTRAR">
+          </div>
+          <div class="form-group">
+            <span><a href="index.html" class="olvide">INICIAR SESIÓN</a></span>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+   
+    <!-- Script para cargar sonido>
+    <script>
+      // Solicita permisos de sonido al cargar la página
+      window.addEventListener('DOMContentLoaded', function() {
+        navigator.permissions.query({ name: 'sound' })
+          .then(function(result) {
+            if (result.state === 'granted') {
+              console.log('Permiso de sonido concedido.');
+              // Aquí puedes agregar el código para habilitar el sonido en tu página
+            } else {
+              console.log('Permiso de sonido no concedido.');  
+              // Aquí puedes agregar el código para mostrar un mensaje de advertencia en tu página
+            }
+          });
+      });
+    </script>
+    <!-->
+
+    <!-- Script para mostrar/ocultar contraseña -->
+    <script>
+      const showPasswordBtn = document.getElementById('show-password-btn');
+      const passwordInput = document.getElementById('password');
+      
+      showPasswordBtn.addEventListener('click', function() {
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          showPasswordBtn.textContent = 'Ocultar contraseña';
+        } else {
+          passwordInput.type = 'password';
+          showPasswordBtn.textContent = 'Mostrar contraseña';
+        }
+      });
+    </script>
+
+    <!-- Script para llamar a la API -->
+    <script>
+      const form = document.getElementById('form');
+      
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const username = document.getElementById('username').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          
+          const ruc = document.getElementById('ruc').value;
+          const empresa = document.getElementById('empresa').value;
+
+          fetch('/register.proveedor', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              Username: username,
+              Email: email,
+              Password: password,
+              Empresa: empresa,
+              Ruc: ruc,
+            })
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+              if (data === 'Proveedor registrado correctamente') {
+                alert('Usuario registrado con éxito');
+                window.location.href = 'index.html';
+              } else {
+                alert('Error al registrar usuario');
+              }
+            })
+            .catch(error => {
+              console.log(error);
+              alert('Error: ', error);
+            });
+        });
+    </script>
+
+    <!-- Link to Bootstrap JS file (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=emNgfuw8vlA" frameborder="0" allowfullscreen ></iframe>
+  </body>
+</html>
