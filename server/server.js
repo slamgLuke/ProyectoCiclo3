@@ -436,7 +436,7 @@ app.post('/check.vehiculo', (req, res) => {
 //
 //
 // Ruta para registrar un nuevo vehiculo sin motor
-app.post('/registrar.vehiculo', (req, res) => {
+app.post('/register.vehiculo', (req, res) => {
     console.log("\n>> Intentando registrar un nuevo vehiculo (sin motor)");
 
     const { VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto } = req.body;
@@ -460,7 +460,7 @@ app.post('/registrar.vehiculo', (req, res) => {
 //
 //
 // Ruta para registrar un nuevo vehiculo con motor
-app.post('/registrar.vehiculo.motor', (req, res) => {
+app.post('/register.vehiculo.motor', (req, res) => {
     console.log("\n>> Intentando registrar un nuevo vehiculo (con motor)");
 
     const { VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto, Combustible, Cilindros, Cilindrada, Potencia } = req.body;
