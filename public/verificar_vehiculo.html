@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy Cars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.cdnfonts.com/css/streamster" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <!--Header-->
+  <header>
+    <nav class="navbar">
+      <div class="container-fluid justify-content-center">
+        <div class="custom-header-text navbar-text">
+          <h1>AUTOMARKET</h1>
+          <h1>Proveedor</h1>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <body class="bg-blue-gradient">    
+  <div class="row">
+    <div class="col-md-6 justify-content-center">
+        <div class="container">
+          <div class="row justify-content-center pt-5 mt-5 mr-1">
+            <div class="col-md-11 justify-content-center formulario">
+              <form id="form">
+                <div class="form-group text-center">
+                  <h1 class="text-light">VERIFICAR VEHICULO</h1>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="vin" class="col-form-label col-md-4">VIN:</label>
+                    <div class="col-md-8">
+                      <input type="number" class="form-control text-white" id="vin" name="vin" placeholder="Ingrese el VIN" pattern="[0-9]" maxlength="8" required>
+                    </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="marca_motor" class="col-form-label col-md-4">Marca del motor:</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control text-white" placeholder="Ingrese la marca del motor" name="marca_motor" id="marca_motor">
+                  </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="modelo_motor" class="col-form-label col-md-4">Modelo del motor:</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control text-white" placeholder="Ingrese el modelo del motor" name="modelo_motor" id="modelo_motor">
+                  </div>
+                </div>
+                <div class="form-group mx-sm-2">
+                  <input type="submit" class="btn btn-block ingresar" value="VERIFICAR">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-6 d-flex">
+          <img src="https://i.gifer.com/2A5.gif" alt="GIF" title="GIF animado" class="img-fluid mx-auto">       
+    </div>
+  </div>
+  
+
+
+    <!-- Script para llamar a la API de verificar vehiculo -->
+    <script>
+      const form = document.getElementById('form');
+      
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const vin = document.getElementById('vin').value;
+          const marca_motor = document.getElementById('marca_motor').value;
+          const modelo_motor = document.getElementById('modelo_motor').value;
+
+          fetch('/check.vehiculo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              VIN: vin,
+              MotorMarca: marca_motor,
+              MotorModelo: modelo_motor
+            })
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+              if (data === 'Motor si existe') {
+                window.location.href = 'home.html';
+              } else if (data === 'Motor no existe') {
+                window.location.href = 'index.html';
+              } else if (data === 'El vehiculo ya existe') {
+                alert('El numero VIN ya existe');
+              } else {
+                alert('Error: ', data);
+              }
+            })
+            .catch(error => {
+              console.log(error);
+              alert('Error: ', error);
+            });
+        });
+    </script>
+
+    <!-- Link to Bootstrap JS file (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=emNgfuw8vlA" frameborder="0" allowfullscreen ></iframe>
+
+  </body>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Información de contacto</h3>
+          <p>Correo electrónico: info@example.com</p>
+          <p>Teléfono: +1 (555) 555-5555</p>
+          <p>Dirección: 123 Main St, Ciudad, Estado</p>
+        </div>
+        <div class="col-md-6">
+          <h3>Síguenos en redes sociales</h3>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</html>
