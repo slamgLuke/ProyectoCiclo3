@@ -442,7 +442,7 @@ app.post('/register.vehiculo', (req, res) => {
     const { VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto } = req.body;
 
     // registrar el vehiculo
-    const vehiculo_query = 'INSERT INTO Vehiculo(VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const vehiculo_query = 'INSERT INTO Vehiculo(VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     connection.query(vehiculo_query, [VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto], (error, results) => {
         if (error) {
             console.error('Error al realizar la consulta: ', error);
@@ -466,7 +466,7 @@ app.post('/register.vehiculo.motor', (req, res) => {
     const { VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto, Combustible, Cilindros, Cilindrada, Potencia } = req.body;
 
     // registrar el vehiculo
-    const vehiculo_query = 'INSERT INTO Vehiculo(VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const vehiculo_query = 'INSERT INTO Vehiculo(VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     connection.query(vehiculo_query, [VIN, Marca, Modelo, Año, Tipo, MotorMarca, MotorModelo, Transmision, Kilometraje, Color, Precio, ProveedorUsername, Foto], (error, results) => {
         if (error) {
             console.error('Error al realizar la consulta: ', error);
@@ -502,9 +502,8 @@ app.post('/register.vehiculo.motor', (req, res) => {
 app.get('/get.historial', (req, res) => {
     console.log("\n>> Intentando obtener historial de compras");
 
-    const username = req.query.username;
-    const query = 'SELECT * FROM Compra WHERE ClienteUsername = ?';
-    connection.query(query, [username], (error, results) => {
+    const query = 'SELECT * FROM Compra';
+    connection.query(query, (error, results) => {
         if (error) {
             console.error('Error al realizar la consulta: ', error);
             res.status(500).send('Error al obtener los datos de la base de datos');
