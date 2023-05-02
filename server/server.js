@@ -324,6 +324,9 @@ app.get('/get.moto', (req, res) => {
                 </body>
             </html>
         `;
+
+        // Response
+        res.send(html);
     });
 
 });
@@ -383,6 +386,9 @@ app.get('/get.camion', (req, res) => {
                     </body>
                 </html>
             `;
+
+            // Response
+            res.send(html);
         }
     });
 
