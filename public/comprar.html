@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy Cars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.cdnfonts.com/css/streamster" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+
+  <body>
+    
+    <div class="container">
+        <div class="row justify-content-center pt-5 mt-5 m-1">
+            <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">
+                <form id="form">
+                    <div class="form-group text-center">
+                        <h1 class="text-light">Realize su compra</h1>
+                        <div class="form-group mx-sm-4 pt-3">
+                            <input type="number" class="form-control" placeholder="Ingrese el VIN a comprar" id="vin">
+                        </div>
+                        <div class="form-group mx-sm-4 pt-3">
+                            <input type="text" class="form-control" placeholder="Nombre de usuario" id="username">
+                        </div>
+                    </div>
+                    <div class="form-group mx-sm-4">
+                        <input type="submit" class="btn btn-block ingresar" value="Comprar">
+                    </div>
+                </form>
+                <div class="form-group text-center">
+                    <button class="btn-custom" onclick="location.href='home.html'">Regresar &#x1F5FF</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('form');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const vin = document.getElementById('vin').value;
+           
+            fetch('/realizar.compra', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    VIN: vin,
+                    ClienteUsername: username
+                })
+            }).then(function(response) {
+                return response.text();
+            }).then(function(data) {
+                console.log(data);
+                if (data == 'Compra realizada con exito') {
+                    alert('Compra realizada con exito');
+                    location.href = 'home.html';
+                } else if (data === 'Usuario invalido') {
+                    alert('Usuario invalido');
+                } else if (data === 'VIN invalido') {
+                    alert('VIN invalido');
+                } else {
+                    alert('Error al realizar la compra');
+                }
+            });
+        });
+    </script>
+
+
+    <!-- Link to Bootstrap JS file (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=emNgfuw8vlA" frameborder="0" allowfullscreen ></iframe>
+
+    </body>
+</html>

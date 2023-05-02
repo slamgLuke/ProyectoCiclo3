@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy Cars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.cdnfonts.com/css/streamster" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <!--Header-->
+  <header>
+    <nav class="navbar">
+      <div class="container-fluid justify-content-center">
+        <div class="custom-header-text navbar-text">
+          <h1>AUTOMARKET</h1>
+          <h1>Proveedor</h1>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <body class="bg-blue-gradient">    
+  <div class="row">
+    <div class="col-md-6 justify-content-center">
+        <div class="container">
+          <div class="row justify-content-center pt-5 mt-5 mr-1">
+            <div class="col-md-11 justify-content-center formulario">
+              <form id="form">
+                <div class="form-group text-center">
+                  <h1 class="text-light">Registrar Vehiculo</h1>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="vin" class="col-form-label col-md-4">VIN:</label>
+                    <div class="col-md-8">
+                      <input type="number" class="form-control text-white" id="vin" name="vin" placeholder="Ingrese el VIN" min="0">
+                    </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="marca" class="col-form-label col-md-4">Marca del vehiculo:</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control text-white" placeholder="Ingrese la marca del vehiculo" name="marca" id="marca">
+                  </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="modelo" class="col-form-label col-md-4">Modelo del vehiculo:</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control text-white" placeholder="Ingrese el modelo del vehiculo" name="modelo" id="modelo">
+                  </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="año" class="col-form-label col-md-4">Año:</label>
+                    <div class="col-md-8">
+                      <input type="number" class="form-control text-white" id="año" name="año" placeholder="Ingrese el año >1900" min="1900" max="2023">
+                    </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="tipo" class="col-form-label col-md-4">Tipo:</label>
+                  <div class="col-md-8">
+                    <select  id="tipo" name="tipo" class="bg-dark text-white">
+                      <option class="text-white">Seleccionar Tipo</option>
+                        <option class="text-white">Auto</option>
+                        <option class="text-white">Moto</option>
+                        <option class="text-white">Camion</option>
+                   </select>
+                  </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="marca_motor" class="col-form-label col-md-4">Marca del motor:</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control text-white" placeholder="Ingrese la marca del motor" name="marca_motor" id="marca_motor">
+                  </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="modelo_motor" class="col-form-label col-md-4">Modelo del motor:</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control text-white" placeholder="Ingrese el modelo del motor" name="modelo_motor" id="modelo_motor">
+                  </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="transmision" class="col-form-label col-md-4">Transmision:</label>
+                  <div class="col-md-8">
+                    <select  id="transmision" name="transmision" class="bg-dark text-white">
+                      <option class="text-white">Seleccionar Transmision</option>
+                        <option class="text-white">Automatica</option>
+                        <option class="text-white">Manual</option>
+                   </select>
+                  </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="kilometraje" class="col-form-label col-md-4">Kilometraje:</label>
+                    <div class="col-md-8">
+                      <input type="number" class="form-control text-white" id="kilometraje" name="kilometraje" placeholder="Ingrese el kilometraje" min="0">
+                    </div>
+                </div>
+              <div class="form-group row mx-sm-4 pt-3">
+                <label for="color" class="col-form-label col-md-4">Color:</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control text-white" placeholder="Ingrese el color" name="color" id="color">
+                </div>
+              </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="precio" class="col-form-label col-md-4">Precio:</label>
+                    <div class="col-md-8">
+                      <input type="number" class="form-control text-white" id="precio" name="precio" placeholder="Ingrese el precio" min="100">
+                    </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="username" class="col-form-label col-md-4">Ingrese su nombre de usuario:</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control text-white" placeholder="Ingrese su username" name="username" id="username">
+                  </div>
+                </div>
+                <div class="form-group row mx-sm-4 pt-3">
+                  <label for="foto_vehiculo" class="col-form-label col-md-4">Foto del vehiculo:</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control text-white" placeholder="URL de la foto https://image" name="foto_vehiculo" id="foto_vehiculo">
+                  </div>
+                </div>
+
+
+                <div class="form-group mx-sm-2">
+                  <input type="submit" class="btn btn-block ingresar" value="REGSTRAR">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-6 d-flex">
+          <img src="https://i.gifer.com/2A5.gif" alt="GIF" title="GIF animado" class="img-fluid mx-auto" >       
+    </div>
+  </div>
+  
+
+
+    <!-- Script para llamar a la API de ... -->
+    <script>
+      const form = document.getElementById('form');
+      
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const vin = document.getElementById('vin').value; 
+          const marca = document.getElementById('marca').value;
+          const modelo = document.getElementById('modelo').value;
+          const año = document.getElementById('año').value;
+          const tipo = document.getElementById('tipo').value;
+          const marca_motor = document.getElementById('marca_motor').value;
+          const modelo_motor = document.getElementById('modelo_motor').value;
+          const transmision = document.getElementById('transmision').value;
+          const kilometraje = document.getElementById('kilometraje').value;
+          const color = document.getElementById('color').value;
+          const precio = document.getElementById('precio').value;
+          const username = document.getElementById('username').value;
+          const foto_vehiculo = document.getElementById('foto_vehiculo').value;
+
+          fetch('/register.vehiculo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                VIN: vin, 
+                Marca: marca,
+                Modelo: modelo,
+                Año: año,
+                Tipo: tipo,
+                MotorMarca: marca_motor,
+                MotorModelo: modelo_motor,
+                Transmision: transmision,
+                Kilometraje: kilometraje,
+                Color: color,
+                Precio: precio,
+                ProveedorUsername: username,
+                Foto: foto_vehiculo
+            })
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+              if (data === 'Vehiculo registrado con exito') {
+                alert('Vehiculo registrado con éxito');
+                window.location.href = 'verificar_vehiculo.html';
+              } else {
+                alert('Error al registrar vehiculo');
+              }
+            })
+            .catch(error => {
+              console.log(error);
+              alert('Error: ', error);
+            });
+        });
+    </script>
+
+    <!-- Link to Bootstrap JS file (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=emNgfuw8vlA" frameborder="0" allowfullscreen ></iframe>
+
+  </body>
+</html>
