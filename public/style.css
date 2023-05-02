@@ -124,4 +124,21 @@ body {
   transform: translateY(-7px);
 }
 
-  
+
+/* david: */
+/* Degradado del body */
+.bg-blue-gradient {
+  background: linear-gradient(to bottom, #1c2331, #4e5e6d);
+}
+
+/* css del texto en el header */
+.custom-header-text {
+  text-align: center;
+  background-color: none;
+  padding: 20px;
+}
+
+/* backgroud header color */
+.navbar {
+  background-color: #161e27;
+}
