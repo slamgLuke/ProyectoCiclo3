@@ -13,7 +13,7 @@ Proyecto para DBP / BD
 ### ¿Cómo inicializar la base de datos?
 Pega el contenido de .instrucciones_mysql.txt en la consola de mysql.
 
-̇### ¿Cómo hostear el sitio web?
+### ¿Cómo hostear el sitio web?
 Pasos:
 
 1. Tener node.js instalado
