@@ -1,7 +1,19 @@
 # ProyectoCiclo3
 Proyecto para DBP / BD
 
-̇¿Cómo hostear el sitio web?
+## Info del proyecto:
+- Frontend: (HTML usando Bootstrap) + CSS
+- Backend: Javascript (Expressjs + mysqljs)
+- APIs: Expressjs
+- Base de Datos: mysql
+
+
+## FAQ:
+
+### ¿Cómo inicializar la base de datos?
+Pega el contenido de .instrucciones_mysql.txt en la consola de mysql.
+
+̇### ¿Cómo hostear el sitio web?
 Pasos:
 
 1. Tener node.js instalado
