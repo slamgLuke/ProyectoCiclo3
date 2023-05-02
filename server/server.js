@@ -248,7 +248,7 @@ app.get('/get.auto', (req, res) => {
                             <p><strong>VIN:</strong> ${car.VIN}</p>
                             <p><strong>Motor:</strong> ${car.MotorMarca} ${car.MotorModelo}</p>
                             <p><strong>Transmisión:</strong> ${car.Transmision}</p>
-                            <p><strong>Kilometraje:</strong> ${car.Kilometraje}</p>
+                            <p><strong>Kilometraje:</strong> ${car.Kilometraje} km</p>
                             <p><strong>Color:</strong> ${car.Color}</p>
                             <p><strong>Precio:</strong> $${car.Precio}</p>
                             <p><strong>Proveedor:</strong> ${car.ProveedorUsername}</p>
@@ -310,7 +310,7 @@ app.get('/get.moto', (req, res) => {
                         <p><strong>VIN:</strong> ${moto.VIN}</p>
                         <p><strong>Motor:</strong> ${moto.MotorMarca} ${moto.MotorModelo}</p>
                         <p><strong>Transmisión:</strong> ${moto.Transmision}</p>
-                        <p><strong>Kilometraje:</strong> ${moto.Kilometraje}</p>
+                        <p><strong>Kilometraje:</strong> ${moto.Kilometraje} km</p>
                         <p><strong>Color:</strong> ${moto.Color}</p>
                         <p><strong>Precio:</strong> $${moto.Precio}</p>
                         <p><strong>Proveedor:</strong> ${moto.ProveedorUsername}</p>
@@ -372,7 +372,7 @@ app.get('/get.camion', (req, res) => {
                             <p><strong>VIN:</strong> ${camion.VIN}</p>
                             <p><strong>Motor:</strong> ${camion.MotorMarca} ${camion.MotorModelo}</p>
                             <p><strong>Transmisión:</strong> ${camion.Transmision}</p>
-                            <p><strong>Kilometraje:</strong> ${camion.Kilometraje}</p>
+                            <p><strong>Kilometraje:</strong> ${camion.Kilometraje} km</p>
                             <p><strong>Color:</strong> ${camion.Color}</p>
                             <p><strong>Precio:</strong> $${camion.Precio}</p>
                             <p><strong>Proveedor:</strong> ${camion.ProveedorUsername}</p>
@@ -621,6 +621,14 @@ app.post('/realizar.compra', (req, res) => {
                             return;
                         }
                         else if (results.length == 0) {
+                            connection.query('DELETE FROM Compra WHERE Codigo = ?', [nuevo_codigo], (error, results) => {
+                                if (error) {
+                                    console.error('Error al realizar la consulta: ', error);
+                                    res.status(500).send('Error al borrar la compra');
+                                    return;
+                                }
+                            });
+
                             console.log('Usuario invalido');
                             res.status(200).send('Usuario invalido');
                             return;
