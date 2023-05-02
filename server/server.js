@@ -621,6 +621,14 @@ app.post('/realizar.compra', (req, res) => {
                             return;
                         }
                         else if (results.length == 0) {
+                            connection.query('DELETE FROM Compra WHERE Codigo = ?', [nuevo_codigo], (error, results) => {
+                                if (error) {
+                                    console.error('Error al realizar la consulta: ', error);
+                                    res.status(500).send('Error al borrar la compra');
+                                    return;
+                                }
+                            });
+
                             console.log('Usuario invalido');
                             res.status(200).send('Usuario invalido');
                             return;
